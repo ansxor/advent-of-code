@@ -3,7 +3,9 @@ class IntcodeComputer:
         while self.data[self.pos] != 99:
             opcode = self.data[self.pos]
             modes = [int(x) for x in '{:0>5}'.format(opcode)]
+            opcode = modes.pop()
             modes = modes[0:3]
+            modes.reverse()
 
             if opcode == 1:
                 l, p = self.get_params(3, modes)
@@ -20,7 +22,7 @@ class IntcodeComputer:
                 self.pos += 2
             elif opcode == 4:
                 l, p = self.get_params(1, modes)
-                print(self.data[l[1]])
+                print(self.data[l[0]])
                 self.pos += 2
 
         pass
@@ -42,13 +44,14 @@ class IntcodeComputer:
         return locations, params 
 
     def reset(self):
-        self.data = self._originaldata
+        self.data = self._original_data
         self.pos = 0
 
     def __init__(self, data):
-        self._originaldata = data
+        self._original_data = data
         self.data = data
         self.pos = 0
+
 
 file = open('input.txt', 'r')
 contents = file.read()
