@@ -1,8 +1,11 @@
 import re
 
+file = open('input.txt', 'r')
+input = [int(x) for x in file.read().split('-')]
+
 count = 0
 
-for i in range(264793, 803936):
+for i in range(input[0], input[1]):
     condition = True
 
     double_rx = re.compile(r'(.)\1')
