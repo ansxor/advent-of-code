@@ -1,14 +1,15 @@
+import re
+
 file = open("input.txt", 'r')
 input = file.readlines()
 
 result = 0
 
 for i in input:
-    z = i.split(':')
-    letter = z[0].split(' ')[1]
-    conditions = [int(x) for x in z[0].split(' ')[0].split('-')]
-    count = z[1].count(letter)
-    if (z[1][conditions[0]] == letter) != (z[1][conditions[1]] == letter):
+    m = re.search('(\\d+)-(\\d+) ([a-z]):( [a-z]+)', i)
+    mn, mx, letter, string = int(m.group(1)), int(m.group(2)), m.group(3), m.group(4)
+    count = string.count(letter)
+    if (string[mn] == letter) != (string[mx] == letter):
         result += 1
 
 print(result)
