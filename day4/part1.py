@@ -1,10 +1,7 @@
-import numpy as np
-from numpy.lib.function_base import append
-
 file = open('input.txt', 'r')
 input = file.read().split('\n\n')
 
-keys = np.array([
+keys = [
     'ecl',
     'pid',
     'eyr',
@@ -12,7 +9,7 @@ keys = np.array([
     'byr',
     'iyr',
     'hgt'
-])
+]
 
 def create_passport(x):
     ret = {}
@@ -26,11 +23,11 @@ def create_passport(x):
     return ret
 
 def is_valid_passport(x):
-    ks = np.array(list(x.keys()))
-    print(ks)
-    return np.any(np.in1d(keys, ks))
+    ks = list(x.keys())
+    result = all(key in ks for key in keys) 
+    return result
 
-elements = map(create_passport, input) 
-valid = map(is_valid_passport, elements)
+elements = list(map(create_passport, input))
+valid = list(filter(is_valid_passport, elements))
 
-print(len(valid))
+print(len(elements),len(valid))
