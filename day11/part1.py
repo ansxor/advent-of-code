@@ -1,27 +1,36 @@
-file = open('test.txt', 'r')
+import tim
+file = open('input.txt', 'r')
 input = [list(x.strip()) for x in file.readlines()]
 
-len_y, len_x = len(input), len(input[0])
+dirs = [(x, y) for x in range(-1, 2) for y in range(-1, 2) if (x, y) != (0, 0)]
 
-def perform_cycle(input):
-    output = [x.copy() for x in input]
-    def check_adj(x, y):
-        output[y][x] = '#'
-        count = 0
-        print(input[y])
-        for test_y in range(-1, 2):
-            for test_x in range(-1, 2):
-                if (test_x, test_y) != (0, 0):
-                    if 0 <= test_x+x < len_x and 0 <= test_y+y < len_y and input[y+test_y][x+test_x] == '#':
-                        count += 1
-                        print(count)
+def cycle(xin):
+    lx, ly = len(xin[0]), len(xin)
+    out = [z.copy() for z in xin]
+    def transform(x, y):
+        if out[y][x] != '.':
+            count = 0
+            for t in dirs:
+                tx, ty = t
+                if 0 <= tx+x < lx and 0 <= ty+y < ly and xin[y+ty][x+tx] == '#':
+                    count += 1
                     if count >= 4:
-                        output[y][x] = 'L'
-                        return
-    for y in range(len(input)):
-        for x in range(len(input[y])):
-            if input[y][x] == 'L':
-                check_adj(x, y)
-    return output
+                        out[y][x] = 'L'
+                        break
+            if count == 0:
+                out[y][x] = '#'
+    for y in range(len(xin)):
+        for x in range(len(xin[y])):
+            transform(x, y)
+    return out
 
-print(perform_cycle(perform_cycle(input.copy()).copy()))
+def gen_hash(l):
+    return "".join(["".join(x) for x in l])
+
+old = gen_hash(input)
+l = cycle(input)
+while old != (n := gen_hash(l)):
+    old = n
+    l = cycle(l)
+print()
+print(gen_hash(l).count('#'))

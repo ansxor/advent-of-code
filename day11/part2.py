@@ -38,7 +38,5 @@ while old != (n := gen_hash(l)):
     old = n
     l = cycle(l)
 
-
-
 print()
 print(gen_hash(l).count('#'))
