@@ -22,7 +22,7 @@ really helpful since it is pretty self explanatory.
 It's just for loops and testing lol
 
 #+name: Day 1 - Part 1 Solution
-#+BEGIN_SRC lisp :tangle day1-part1.lisp :exports result
+#+BEGIN_SRC lisp :tangle day1-part1.lisp :exports both
   ;;;; Advent of Code 2020 - Day 1 Part 1 Solution
 
   ;;;; Solution
@@ -48,7 +48,7 @@ It's just for loops and testing lol
 Now it's just part 1, except it's 3 numbers now.
 
 #+name: Day 1 - Part 2 Solution
-#+BEGIN_SRC lisp :tangle day1-part2.lisp :exports result
+#+BEGIN_SRC lisp :tangle day1-part2.lisp :exports both
   ;;;; Advent of Code 2020 - Day 1 Part 2 Solution
 
   ;;;; Solution
