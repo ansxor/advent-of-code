@@ -1,0 +1,21 @@
+#+TITLE: Advent of Code 2020
+#+AUTHOR: answer
+
+This README will contain explanations to each day and how to solve each day using LISP.
+I solve each solution first using Python, because it is the programming language with
+the most amount of libraries and the easiest to do a lot of things without thinking
+or searching them up. LISP is really good for explaining how something works though
+because it is a self-documenting and verbose language that is easy to read.
+
+Most of the reason why I have this is because of the secret algorithm club and their dang
+algorithms that I had no idea about that I would like to come back later and see my own
+notes on them instead of just blatently copying someone else's code.
+
+I will try to make my LISP code as easy to understand as possible but there are no
+guarantees.
+
+The format of LISP I will be using, so that it is easy for others to setup and execute
+easily, will be Emacs LISP.
+
+* Solutions / Explanations
+- [[file:day1/solution.org][Day 1]]
