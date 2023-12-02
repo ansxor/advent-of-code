@@ -1,5 +1,0 @@
-file = open('input.txt', 'r')
-input = [x.strip() for x in file.readlines()]
-
-for i in input:
-    pass

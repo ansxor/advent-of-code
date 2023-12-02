@@ -1,8 +1,0 @@
-file = open('test.txt', 'r')
-
-earliest_timestamp = int(file.readline())
-
-ids = [int(x.strip()) for x in file.readline().split(',') if x != 'x']
-leave_times = [x * ((x // earliest_timestamp) + 1) for x in ids]
-
-print(leave_times)
